@@ -55,11 +55,11 @@ export default function HomePage() {
         <Room modelPath="/models/buildings/room4.glb" position={[0, 0, 0]} />
 
             <NPCModel ref={(el: RapierRigidBody | null) => { npcRefs.current['prof10'] = el;}} url="/models/prof10.glb"
-              position={[-4, 1, -15]} scale={1}  name="prof10" playerRef={playerRef} activeNpc={activeNpc} 
+              position={[-4, 1, -15]} scale={1}  name="prof10" playerRef={playerRef}
               tdistance={3} onDialogueOpen={(npcName) => setActiveNpc(npcName)} setShowDialogue={setShowDialogue}  />
 
             <NPCModel ref={(el: RapierRigidBody | null) => { npcRefs.current['prof8'] = el;}} url="/models/prof8.glb"
-              position={[5, 1, -15]} scale={1}  name="prof8" playerRef={playerRef} activeNpc={activeNpc} 
+              position={[5, 1, -15]} scale={1}  name="prof8" playerRef={playerRef} 
               tdistance={3} onDialogueOpen={(npcName) => setActiveNpc(npcName)} setShowDialogue={setShowDialogue} 
               />
 

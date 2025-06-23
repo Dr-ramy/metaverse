@@ -90,20 +90,20 @@ export default function HomePage() {
 
             <NPCModel
               ref={(el: RapierRigidBody | null) => { npcRefs.current['npc1'] = el;}} url="/models/npc1.glb"
-              position={[50, 0, -50]} scale={1}  name="npc1" playerRef={playerRef} activeNpc={activeNpc} 
+              position={[50, 0, -50]} scale={1}  name="npc1" playerRef={playerRef} 
               onDialogueOpen={setActiveNpc} setShowDialogue={setShowDialogue} 
               path={[ [30, 0, 20], [40, 0, 30], [40, 0, -30], [70, 0, -70],[50, 0, -50]]}
             />
             <NPCModel
               ref={(el: RapierRigidBody | null) => { npcRefs.current['wpc3'] = el;}} url="/models/wpc3.glb"
-              position={[-8, 0, 11]} scale={1}  name="wpc3" playerRef={playerRef} activeNpc={activeNpc} 
+              position={[-8, 0, 11]} scale={1}  name="wpc3" playerRef={playerRef} 
               onDialogueOpen={(npcName) => setActiveNpc(npcName)}
               setShowDialogue={setShowDialogue} 
               path={[ [-9, 0, -30], [-8, 0, -50], [-8, 0, -70],[-10, 0, -50],[-8, 0, 11]]}
             />
               <NPCModel
               ref={(el: RapierRigidBody | null) => { npcRefs.current['wpc2'] = el;}} url="/models/wpc2.glb"
-              position={[30, 0, 11]} scale={1}  name="wpc2" playerRef={playerRef} activeNpc={activeNpc} 
+              position={[30, 0, 11]} scale={1}  name="wpc2" playerRef={playerRef} 
               onDialogueOpen={(npcName) => setActiveNpc(npcName)}
               setShowDialogue={setShowDialogue} 
             />

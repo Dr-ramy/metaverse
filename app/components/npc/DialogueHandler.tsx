@@ -111,10 +111,8 @@ NPC:
     stop();
     reset();
     stopListening();
+if (onClose) onClose(); // ✅ يشغّل الدالة
 
-    if (onClose) {
-      onClose(); // ✅ تم استدعاء الدالة بشكل صحيح
-    }
   };
 
   return (
@@ -129,7 +127,11 @@ NPC:
           onOptionClick={closeDialogue}
           onClose={closeDialogue}
           onStartListening={() => {
-            listening ? stopListening() : startListening();
+            if (listening) {
+              stopListening();
+            } else {
+              startListening();
+            }
           }}
           listening={listening}
         />

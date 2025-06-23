@@ -54,7 +54,7 @@ export default function HomePage() {
         <Room modelPath="/models/buildings/room3.glb" position={[0, 0, 0]} />
 
             <NPCModel ref={(el: RapierRigidBody | null) => { npcRefs.current['prof4'] = el;}} url="/models/prof4.glb"
-              position={[-60, .5, -9]} scale={2.5}  name="prof4" playerRef={playerRef} activeNpc={activeNpc} 
+              position={[-60, .5, -9]} scale={2.5}  name="prof4" playerRef={playerRef} 
               tdistance={7} onDialogueOpen={(npcName) => setActiveNpc(npcName)} setShowDialogue={setShowDialogue}  />
 
             <Player  position={[-50, 3, 5]}  scale = {[1, 1, 1]} cameraH = {5} rotationSpeed={3} // دوران أسرع

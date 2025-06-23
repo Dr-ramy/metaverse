@@ -75,7 +75,6 @@ export default function HomePage() {
             scale={2.5}
             name="prof6"
             playerRef={playerRef}
-            activeNpc={activeNpc}
             tdistance={7}
             onDialogueOpen={setActiveNpc}
             setShowDialogue={setShowDialogue}
