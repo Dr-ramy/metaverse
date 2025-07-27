@@ -18,7 +18,7 @@ export default function Room({
   modelPath,
   scale = [1, 1, 1],
   collider = true,
-  exitColliderPosition = [0, 2, -35], // ← موقع المصادم
+  exitColliderPosition = [14.3, 2.5,-24], // ← موقع المصادم
   redirectUrl = '/scenes',             // ← الرابط الذي يتم الذهاب إليه
   ...props
 }: RoomProps) {
@@ -40,7 +40,7 @@ export default function Room({
         {/* المصادم الأسود عند الباب */}
         <RigidBody type="fixed" colliders={false}>
           <CuboidCollider
-            args={[9, 2.5, 0.1]}
+            args={[3, 2.5, 0.1]}
             position={exitColliderPosition}
             onCollisionEnter={handleCollision}
           />
@@ -48,7 +48,7 @@ export default function Room({
             position={exitColliderPosition}
             visible={true}
           >
-            <boxGeometry args={[20, 5, 0.2]} />
+            <boxGeometry args={[4.5, 5, 0.2]} />
             <meshStandardMaterial color="black" transparent opacity={.5} />
           </mesh>
         </RigidBody>

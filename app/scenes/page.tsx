@@ -80,10 +80,7 @@ export default function HomePage() {
 
           <SimpleDoor playerRef={playerRef} url="/models/door.glb" position={[26.5, 0.09, -63.5]} scale={[1, 1, 1]}   redirectUrl="/scenes/room5"/>
           <Signboard text="lab5" rotation={[0, Math.PI , 0]}  position={[26.5,6.7, -63.5]} scale={[6, 2, 0.1]} />
-
-
-
-            
+          
             {/* Avatar (مثال) 
             <MultiplayerAvatar position={[10, 1, 10]} />
             */}

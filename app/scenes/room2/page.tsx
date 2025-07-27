@@ -14,8 +14,10 @@ import Joystick from '@/app/components/player/JoystickControls';
 import Room from '@/app/scenes/room2/Room';
 import NPCModel from '@/app/components/npc/NPCModel'
 import DialogueHandler from '@/app/components/npc/DialogueHandler'
+import Image from 'next/image';
 
 export default function HomePage() {
+const [showImage, setShowImage] = useState(true);
 
 
   const lastPosRef = useRef(new THREE.Vector3(0, 0, 0));
@@ -75,6 +77,94 @@ export default function HomePage() {
             />
           )}
         </div>
+
+
+
+        {showDialogue && (
+          <>
+            {/* Image with Close Button */}
+            {showImage && (
+              <div
+                style={{
+                  position: 'absolute',
+                  top: 50,
+                  right: 10,
+                  zIndex: 20,
+                  padding: '10px',
+                }}
+              >
+                <div style={{ position: 'relative', width: '300px' }}>
+                  {/* Close Icon-Only Button */}
+                  <button
+                    onClick={() => setShowImage(false)}
+                    title="Hide image"
+                    style={{
+                      position: 'absolute',
+                      top: '-10px',
+                      right: '-10px',
+                      background: '#fff',
+                      border: '1px solid #ccc',
+                      borderRadius: '50%',
+                      width: '24px',
+                      height: '24px',
+                      cursor: 'pointer',
+                      fontSize: '14px',
+                      boxShadow: '0 0 4px rgba(0,0,0,0.2)',
+                      zIndex: 5,
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      padding: 0,
+                    }}
+                  >
+                    ❌
+                  </button>
+        
+                  <Image
+                    src="/image/pic2.jpg"
+                    alt="Dialogue Test Image"
+                    width={150}
+                    height={100}
+                    style={{
+                      width: '100%',
+                      height: 'auto',
+                      borderRadius: '8px',
+                      boxShadow: '0 0 8px rgba(0,0,0,0.2)'
+                    }}
+                  />
+                </div>
+              </div>
+            )}
+        
+            {/* Toggle Show Button */}
+            {!showImage && (
+              <button
+                onClick={() => setShowImage(true)}
+                title="Show image"
+                style={{
+                  position: 'absolute',
+                  top: 50,
+                  right: 10,
+                  zIndex: 20,
+                  background: '#fff',
+                  border: '1px solid #ccc',
+                  borderRadius: '50%',
+                  width: '36px',
+                  height: '36px',
+                  fontSize: '18px',
+                  cursor: 'pointer',
+                  boxShadow: '0 0 4px rgba(0,0,0,0.2)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                }}
+              >
+                👁️
+              </button>
+            )}
+          </>
+        )}
+        
     </main>
   );
 }

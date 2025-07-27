@@ -29,7 +29,7 @@ const Player = forwardRef<THREE.Object3D, PlayerProps>(
       movementInput = { x: 0, y: 0 },
       cameraRotation = { x: 0, y: 0 },
       sensitivity = 0.05,
-      position = [0, 0, 0],
+      position = [20, 1.5, 20], // Increased height
       scale = [1, 1, 1],
       cameraH = 2,
       rotationSpeed = 1.0,
@@ -48,14 +48,13 @@ const Player = forwardRef<THREE.Object3D, PlayerProps>(
     const yaw = useRef(0);
     const pitch = useRef(0);
 
-    // هنا التعديل: نؤكد أن objectRef.current غير null
     useImperativeHandle(externalRef, () => objectRef.current!);
 
     useFrame(() => {
       const joystickVector = new THREE.Vector3(movementInput.x, 0, movementInput.y);
 
-      frontVector.set(0, 0, Number(joystickVector.z));
-      sideVector.set(Number(joystickVector.x), 0, 0);
+      frontVector.set(0, 0, joystickVector.z);
+      sideVector.set(joystickVector.x, 0, 0);
 
       direction
         .copy(frontVector)
@@ -78,6 +77,14 @@ const Player = forwardRef<THREE.Object3D, PlayerProps>(
 
       const pos = rigidBodyRef.current?.translation();
       if (pos) {
+        // ⛑ Fallback: Reset if player falls
+        if (pos.y < -20 && rigidBodyRef.current) {
+          rigidBodyRef.current.setTranslation({ x: 20, y: 2, z: 20 }, true);
+          rigidBodyRef.current.setLinvel({ x: 0, y: 0, z: 0 }, true);
+          return;
+        }
+
+
         camera.position.set(pos.x, pos.y + cameraH, pos.z);
         camera.rotation.set(pitch.current, yaw.current, 0, 'YXZ');
 
@@ -88,7 +95,7 @@ const Player = forwardRef<THREE.Object3D, PlayerProps>(
     });
 
     return (
-      <group ref={objectRef}  key="player-group">
+      <group ref={objectRef} key="player-group">
         <RigidBody
           ref={rigidBodyRef}
           name="player"
@@ -98,9 +105,9 @@ const Player = forwardRef<THREE.Object3D, PlayerProps>(
           scale={scale}
           enabledRotations={[false, false, false]}
           mass={1}
-          friction={0.8}
-          linearDamping={0.2}
-          angularDamping={0.2}
+          friction={1}
+          linearDamping={2}
+          angularDamping={2}
           canSleep={false}
         >
           <CapsuleCollider args={[0.5, 1]} />

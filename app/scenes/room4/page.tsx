@@ -51,7 +51,7 @@ export default function HomePage() {
         <Environment preset="sunset" background={false} />
 
         {/* Physics */}
-      <Physics gravity={[0, -9.81, 0]} debug >
+      <Physics gravity={[0, -9.81, 0]}>
         <Room modelPath="/models/buildings/room4.glb" position={[0, 0, 0]} />
 
             <NPCModel ref={(el: RapierRigidBody | null) => { npcRefs.current['prof10'] = el;}} url="/models/prof10.glb"
@@ -63,7 +63,7 @@ export default function HomePage() {
               tdistance={3} onDialogueOpen={(npcName) => setActiveNpc(npcName)} setShowDialogue={setShowDialogue} 
               />
 
-            <Player  position={[-4, 3, 0]}  scale = {[1, 1, 1]} cameraH = {1.5} rotationSpeed={3} // دوران أسرع
+            <Player  position={[-4,5, 0]}  scale = {[1, 1.5, 1]} cameraH = {1.5} rotationSpeed={3} // دوران أسرع
               movementInput={movementInput} cameraRotation={cameraJoystickInput}  sensitivity={sensitivity}
               onPositionChange={handlePositionChange} ref={playerRef}
             />
